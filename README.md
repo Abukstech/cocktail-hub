@@ -1,6 +1,8 @@
-# React + TypeScript + Vite
+# Cocktail Hub Project 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a projetc displaying variteries of cocktail brands utilizing the free api resource  from [cocktailDb](https://www.thecocktaildb.com/api.php) .
+
+
 
 Currently, two official plugins are available:
 
