@@ -1,4 +1,4 @@
-export type AlcoholicFilterType = 'Alcoholic' | 'Non_Alcoholic';
+export type AlcoholFilterType = 'Alcoholic' | 'Non_Alcoholic';
 
 export interface Cocktail {
   idDrink: string;

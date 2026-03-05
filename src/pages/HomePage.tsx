@@ -5,13 +5,13 @@ import { AlphabetDropdown } from '../components/AlphabetDropdown';
 import { Hero } from '../components/Hero';
 import { ProductCard } from '../components/ProductCard';
 import { useCocktailsByAlphabet, useCocktailsByIngredient } from '../hooks/useCocktail';
-import type { AlcoholicFilterType } from '../types/cocktail';
+import type { AlcoholFilterType } from '../types/cocktail';
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [selectedAlphabet, setSelectedAlphabet] = useState('a');
-  const [selectedAlcoholType, setSelectedAlcoholType] = useState<'all' | AlcoholicFilterType>('all');
+  const [selectedAlcoholType, setSelectedAlcoholType] = useState<'all' | AlcoholFilterType>('all');
   const ingredientQuery = searchParams.get('ingredient')?.trim() ?? '';
 
   const cocktailsByAlphabetQuery = useCocktailsByAlphabet(selectedAlphabet);

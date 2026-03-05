@@ -1,6 +1,6 @@
-import type { AlcoholicFilterType } from '../types/cocktail';
+import type { AlcoholFilterType } from '../types/cocktail';
 
-type AlcoholFilterValue = 'all' | AlcoholicFilterType;
+type AlcoholFilterValue = 'all' | AlcoholFilterType;
 
 interface AlcoholTypeFilterProps {
   value: AlcoholFilterValue;

@@ -1,75 +1,63 @@
-# Cocktail Hub Project 
+# Cocktail Hub Project
 
-This is a projetc displaying variteries of cocktail brands utilizing the free api resource  from [cocktailDb](https://www.thecocktaildb.com/api.php) .
+This project displays a variety of cocktail brands using the free API from [TheCocktailDB](https://www.thecocktaildb.com/api.php).
+
+It includes features such as:
+- Search cocktails by ingredient name
+- List available cocktails by alphabet
+-Filter By Alcoholic and Non Alcoholic
+- View cocktail details
+- View Ingredient details
 
 
+## How To Run This Project
 
-Currently, two official plugins are available:
+### Clone This Repository
+Install dependencies:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Set environment variables:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_API_BASE_URL=https://www.thecocktaildb.com/api/json/v1/1
 ```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+## Architectural Decisions
+
+Due to the nature of this project, I created a single source of truth for data access using Axios in a central API client file that connects to the server URL.
+
+This is extended through two different service files that expose the respective endpoints:
+- `cocktail`
+- `ingredients`
+
+To enforce type safety, I also created dedicated type files.
+
+Next, hooks handle server-state management using `@tanstack/react-query` for caching and overall server-state flow.
+
+This is the flow that populates data across the pages.
+
+## UI Decisions
+
+I used Tailwind CSS together with DaisyUI (a Tailwind component library) to build the required UI components, all contained in the `components` folder.
+
+I also created `pages` to define the actual route-level screens.
+
+## Tradeoffs and Assumptions
+
+The filter-by-alphabet implementation was chosen because the available API supports listing cocktails in alphabetical order.
+
+I decided to implement Alcoholic vs Non-Alcoholic filtering using available list data instead of the dedicated filter endpoint. This was done because of inconsistencies in the separate endpoint response shape. The filter response may omit alcohol-brand/context details, which can be confusing for users.
+
+## What I Would Improve
+
+- Implement client-side pagination (while server-side pagination remains the ideal approach)
+- Implement localization using an i18n library for different languages, since the API also returns localized data

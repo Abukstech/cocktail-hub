@@ -44,7 +44,7 @@ export const CocktailDetailsPage = () => {
             <img
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
-              className="w-full max-h-[420px] object-cover"
+              className="w-full max-h-105 object-cover"
             />
           </figure>
           <div className="card-body">
