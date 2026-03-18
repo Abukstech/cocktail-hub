@@ -50,7 +50,8 @@ export const CocktailDetailsPage = () => {
           <div className="card-body">
             <h1 className="card-title text-3xl">{cocktail.strDrink}</h1>
             <p className="text-base-content/70">
-              {cocktail.strAlcoholic} | {cocktail.strCategory} | {cocktail.strGlass}
+              {cocktail.strAlcoholic ?? 'Unknown'} | {cocktail.strCategory ?? 'Uncategorized'} |{' '}
+              {cocktail.strGlass ?? 'Unknown glass'}
             </p>
             {!!cocktail.strIBA && <p className="text-sm text-base-content/70">IBA: {cocktail.strIBA}</p>}
             {!!cocktail.strTags && <p className="text-sm text-base-content/70">Tags: {cocktail.strTags}</p>}
@@ -74,7 +75,7 @@ export const CocktailDetailsPage = () => {
 
             <div>
               <h2 className="text-xl font-semibold mb-2">Instructions</h2>
-              <p>{cocktail.strInstructions}</p>
+              <p>{cocktail.strInstructions ?? 'No instructions available.'}</p>
             </div>
           </div>
         </div>

@@ -3,8 +3,8 @@ import { useIngredientByName } from '../hooks/useIngredient';
 
 export const IngredientDetailsPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const ingredientName = decodeURIComponent(id ?? '');
+  const { name } = useParams();
+  const ingredientName = decodeURIComponent(name ?? '');
   const ingredientDetailsQuery = useIngredientByName(ingredientName);
   const ingredient = ingredientDetailsQuery.data;
 

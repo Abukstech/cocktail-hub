@@ -21,10 +21,10 @@ export const ProductCard = ({ cocktail, onClick }: ProductCardProps) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{cocktail.strDrink}</h2>
-
+        <p className="line-clamp-2">{cocktail.strInstructions ?? 'No instructions available.'}</p>
         <div className="card-actions justify-end">
-         {cocktail.strAlcoholic && <div className="badge badge-outline">{cocktail.strAlcoholic}</div> } 
-         {cocktail.strCategory && <div className="badge badge-outline">{cocktail.strCategory}</div>} 
+          <div className="badge badge-outline">{cocktail.strAlcoholic ?? 'Unknown'}</div>
+          <div className="badge badge-outline">{cocktail.strCategory ?? 'Uncategorized'}</div>
         </div>
       </div>
     </button>

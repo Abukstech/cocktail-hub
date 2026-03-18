@@ -1,4 +1,4 @@
-const ALPHABETS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+import { ALPHABETS } from '../lib/constants';
 
 interface AlphabetDropdownProps {
   value: string;

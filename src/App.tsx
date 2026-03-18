@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cocktail/:id" element={<CocktailDetailsPage />} />
-        <Route path="/ingredient/:id" element={<IngredientDetailsPage />} />
+        <Route path="/ingredient/:name" element={<IngredientDetailsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

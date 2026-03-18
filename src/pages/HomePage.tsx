@@ -5,12 +5,13 @@ import { AlphabetDropdown } from '../components/AlphabetDropdown';
 import { Hero } from '../components/Hero';
 import { ProductCard } from '../components/ProductCard';
 import { useCocktailsByAlphabet, useCocktailsByIngredient } from '../hooks/useCocktail';
+import { DEFAULT_ALPHABET } from '../lib/constants';
 import type { AlcoholFilterType } from '../types/cocktail';
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [selectedAlphabet, setSelectedAlphabet] = useState('a');
+  const [selectedAlphabet, setSelectedAlphabet] = useState(DEFAULT_ALPHABET);
   const [selectedAlcoholType, setSelectedAlcoholType] = useState<'all' | AlcoholFilterType>('all');
   const ingredientQuery = searchParams.get('ingredient')?.trim() ?? '';
 
@@ -23,9 +24,9 @@ export const HomePage = () => {
         return true;
       }
       if (selectedAlcoholType === 'Alcoholic') {
-        return cocktail.strAlcoholic.toLowerCase() === 'alcoholic';
+        return (cocktail.strAlcoholic ?? '').toLowerCase() === 'alcoholic';
       }
-      const normalized = cocktail.strAlcoholic.toLowerCase().replace(/[\s_-]/g, '');
+      const normalized = (cocktail.strAlcoholic ?? '').toLowerCase().replace(/[\s_-]/g, '');
       return normalized === 'nonalcoholic';
     }) ?? [];
 

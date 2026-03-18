@@ -6,11 +6,11 @@ export interface Cocktail {
   strDrinkAlternate: string | null;
   strTags: string | null;
   strVideo: string | null;
-  strCategory: string;
+  strCategory: string | null;
   strIBA: string | null;
-  strAlcoholic: string;
-  strGlass: string;
-  strInstructions: string;
+  strAlcoholic: string | null;
+  strGlass: string | null;
+  strInstructions: string | null;
   strDrinkThumb: string;
   strIngredient1: string | null;
   strIngredient2: string | null;
