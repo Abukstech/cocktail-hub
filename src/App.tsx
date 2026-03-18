@@ -1,6 +1,7 @@
 
 import './App.css'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { NetworkStatusBanner } from './components/NetworkStatusBanner'
 import { NavBar } from './components/NavBar'
 import { CocktailDetailsPage } from './pages/CocktailDetailsPage'
 import { HomePage } from './pages/HomePage'
@@ -9,6 +10,7 @@ import { IngredientDetailsPage } from './pages/IngredientDetailsPage'
 function App() {
   return (
     <>
+      <NetworkStatusBanner />
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
